@@ -1,5 +1,5 @@
 """
-深度优先搜索算法
+广度优先搜索算法
 """
 
 
@@ -20,7 +20,7 @@ def search(G, s):
     LIST = []
     LIST.append(s)
     while LIST:
-        i = LIST.pop()
+        i = LIST.pop(0)
         for (index, value) in enumerate(G[i - 1]):
             if value == 1:
                 for j in range(len(G)):
@@ -31,15 +31,16 @@ def search(G, s):
                         order[j] = next
                         LIST.append(j + 1)
 
+
     return (pred, order)
 
 
-G = [[1, 1, 0, 0, 0, 0, 0, 0],
-     [-1, 0, 1, 1, 1, 0, 0, 0],
-     [0, -1, -1, 0, 0, 1, 0, 0],
-     [0, 0, 0, -1, 0, -1, 1, 0],
-     [0, 0, 0, 0, -1, 0, 0, 1],
-     [0, 0, 0, 0, 0, 0, -1, -1]]
+G = [[1, 1, 0, 0, 0, 0, 0, 0, 0],
+     [-1, 0, 1, 1, 1, 0, 0, 0, 0],
+     [0, -1, -1, 0, 0, 1, 0, 0, 0],
+     [0, 0, 0, -1, 0, -1, 1, -1, 0],
+     [0, 0, 0, 0, -1, 0, 0, 1, 1],
+     [0, 0, 0, 0, 0, 0, -1, 0, -1]]
 s = 1
 (pred, order) = search(G, s)
 print(pred)
